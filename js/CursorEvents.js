@@ -9,7 +9,7 @@ AFRAME.registerComponent("click_events",{
     },
     handleMouseEnterEvent: function(){
         this.el.addEventListener("mouseenter",()=>{
-            const placeId = ["taj-mahal", "budapest", "eiffel-tower", "new-york-city"]
+            const placeId = ["room1", "room2", "room3"]
             const id = this.el.getAttribute("id");
             if(placeId.includes(id)){   
                 const placeContainer = document.querySelector("#places-container")
@@ -45,7 +45,7 @@ AFRAME.registerComponent("click_events",{
                 const {state} = placesContainer.getAttribute("tour");
                 if (state == "places-list"){
                     const id = this.el.getAttribute("id")
-                    const placesId = ["taj-mahal", "budapest", "eiffel-tower", "new-york-city"]
+                    const placesId = ["room1", "room2", "room3"]
                     if (placesId.includes(id)){
                         placesContainer.setAttribute("tour", {state: "view", selectedCard: id})
                     }
@@ -60,15 +60,10 @@ AFRAME.registerComponent("click_events",{
             const id = el.getAttribute("id")
             const placeContainer = document.querySelector("#places-container");
             const {selectedItemId} = placeContainer.getAttribute("click_events");
-            const sideViewPlacesId = ["place-1", "place-2", "place-3", "place-4"]
-            console.log(selectedItemId,id)
-            if(sideViewPlacesId.includes(id)){
-                placeContainer.setAttribute("tour", {state: "sideView"})
                 const skyEl = document.querySelector("#main-container");
                 skyEl.setAttribute("material",{
-                    src: `./assets/360_images/${selectedItemId}/${id}.jpg`,
+                    src: `./assets/${selectedItemId}.jpeg`,
                     color:"white"
                 })  
-            }
         }
     })

@@ -20,31 +20,26 @@ AFRAME.registerComponent("tour", {
   createCards: function () {
     const thumbNailsRef = [
       {
-        id: "taj-mahal",
-        title: "Taj Mahal",
-        url: "./assets/thumbnails/taj_mahal.png",
+        id: "room1",
+        title: "Outer Locality",
+        url: "./assets/3.jpg",
       },
       {
-        id: "budapest",
-        title: "Budapest",
-        url: "./assets/thumbnails/budapest.jpg",
+        id: "room2",
+        title: "Bedroom 1",
+        url: "./assets/2.jpg",
       },
 
       {
-        id: "eiffel-tower",
-        title: "Eiffel Tower",
-        url: "./assets/thumbnails/eiffel_tower.jpg",
-      },
-      {
-        id: "new-york-city",
-        title: "New York City",
-        url: "./assets/thumbnails/new_york_city.png",
-      },
+        id: "room3",
+        title: "Bedroom 2",
+        url: "./assets/1.jpg",
+      }
     ];
     let prevoiusXPosition = -60;
 
     for (var item of thumbNailsRef) {
-      const posX = prevoiusXPosition + 25;
+      const posX = prevoiusXPosition + 30;
       const posY = 10;
       const posZ = -40;
       const position = { x: posX, y: posY, z: posZ };
@@ -67,8 +62,8 @@ AFRAME.registerComponent("tour", {
     entityEl.setAttribute("position",position);
     entityEl.setAttribute("geometry",{
       primitive:"ring",
-      radiusInner:9,
-      radiusOuter:10
+      radiusInner:7,
+      radiusOuter:8
     });
     entityEl.setAttribute("material",{
       color:"#5f545b",
@@ -82,7 +77,7 @@ AFRAME.registerComponent("tour", {
     entityEl.setAttribute("visible",true);
     entityEl.setAttribute("geometry",{
       primitive:"circle",
-      radius:9
+      radius:7
     });
     entityEl.setAttribute("material",{
       src:item.url
@@ -96,10 +91,10 @@ AFRAME.registerComponent("tour", {
       font:"roboto",
       align: "center",
       width: 70,
-      color: "#f70077",
+      color: "white",
       value:item.title
     });
-    position.y = -20
+    position.y = -15
     entityEl.setAttribute("position",position);
     return entityEl;
   },
@@ -112,7 +107,7 @@ AFRAME.registerComponent("tour", {
     var {selectedCard} = this.data;
     var skyEl = document.querySelector("#main-container")
     skyEl.setAttribute("material", {
-      src : `./assets/360_images/${selectedCard}/place-0.jpg`,
+      src : `./assets/${selectedCard}.jpeg`,
       color:"white"
     })
   }
